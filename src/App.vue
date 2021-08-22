@@ -11,10 +11,12 @@
     <span>{{ automaticCounter }}</span>
     <button @click="activateAutomaticCounter">Ativar contador automático</button>
 
-    <!-- <input type="text" :value="email" @input="updateEmail">
-    {{ email }} -->
+    <!-- <input type="email" :value="email" @input="updateEmail"> -->
     <input type="email.get" v-model="email">
-    {{ email }}
+    <span>{{ email }}</span>
+
+    <button @click="changeColor('black')">Mudar Cor</button>
+    <span>{{ color }}</span>
   </div>
 </template>
 
@@ -28,6 +30,7 @@ export default {
     ...mapGetters('counter', ['count']),
     ...mapGetters('name', ['name']),
     // ...mapGetters('email', ['email']),
+    ...mapGetters(['color']),
 
     email: {
       get () {
@@ -37,11 +40,11 @@ export default {
         this.$store.commit('email/updateEmail', value)
       }
     }
-    
   },
   methods: {
     ...mapMutations('counter', ['add', 'sub']),
     ...mapMutations('name', ['setName']),
+    ...mapMutations(['changeColor']),
 
     ...mapActions(['activateAutomaticCounter']),
 

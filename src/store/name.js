@@ -1,12 +1,16 @@
+export const getters = {
+  name: state => state.name
+}
+
+export const mutations = {
+  setName: state => state.name = 'Mich'
+}
+
 export default {
   namespaced: true,
   state: {
     name: ''
   },
-  getters: {
-    name: state => state.name
-  },
-  mutations: {
-    setName: state => state.name = 'Mich'
-  }
+  getters,
+  mutations
 }
